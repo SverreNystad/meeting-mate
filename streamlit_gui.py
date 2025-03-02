@@ -2,6 +2,7 @@ from time import time
 import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 from recorder import DATA_FOLDER
+from summarizer import summarize
 from transcriber import Model, transcribe
 
 st.title("Meeting Mate")
@@ -32,3 +33,9 @@ if audio_value:
 
     st.write("### Transcription")
     st.write(transcription)
+    if st.button("Summarize"):
+        if transcription:
+            st.text("Summarization in progress...")
+            summary = summarize(transcription["text"])
+            st.subheader("Summary")
+            st.write(summary)
