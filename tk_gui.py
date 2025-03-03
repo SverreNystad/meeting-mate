@@ -1,6 +1,6 @@
 import tkinter as tk
-from recorder import Recorder
-from transcriber import transcribe
+from src.recorder import Recorder
+from src.transcriber import transcribe
 
 recorder = Recorder()
 

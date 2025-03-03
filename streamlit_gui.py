@@ -2,9 +2,9 @@ from time import time
 import os
 import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
-from recorder import DATA_FOLDER
-from summarizer import summarize
-from transcriber import Model, transcribe
+from src.recorder import DATA_FOLDER
+from src.summarizer import summarize
+from src.transcriber import Model, transcribe
 
 # Configure page settings
 st.set_page_config(page_title="Meeting Mate", layout="wide")
@@ -60,7 +60,6 @@ if audio_value:
     if enable_summarization:
         if st.button("Summarize Transcription"):
             if transcription_text:
-                st.text("Summarization in progress...")
                 with st.spinner("Summarizing transcription..."):
                     summary = summarize(transcription_text)
                 st.success("Summarization completed!")
