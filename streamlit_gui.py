@@ -66,5 +66,13 @@ if audio_value:
                 st.success("Summarization completed!")
                 st.subheader("Summary")
                 st.write(summary)
+
+                if summary:
+                    st.download_button(
+                        label="Download summary",
+                        data=summary.content,
+                        file_name="summary.txt",
+                        mime="text/plain",
+                    )
             else:
                 st.error("No transcription text available for summarization.")
