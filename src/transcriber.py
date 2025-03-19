@@ -12,11 +12,11 @@ class Model(Enum):
 
 def transcribe(
     file_path: str,
-    generate_kwargs={
+    generate_kwargs: dict ={
         "task": "transcribe",
         "language": "no",
     },
     model_name: Model = Model.small,
-):
+) -> dict:
     asr = pipeline("automatic-speech-recognition", "NbAiLabBeta/" + model_name.value)
     return asr(file_path, return_timestamps=True, generate_kwargs=generate_kwargs)
